@@ -739,7 +739,10 @@ const formatTrack = function (data) {
     track.album = formatSimpleObject(track.album);
   }
 
-  // Produce a sort-friendly disc_track float (XXX.XXX)
+  // Produce a sort-friendly disc_track float (XXXXXX.XXXXXX)
+  // bug fix: adjusted pad from 3 to 6 for track and disc number
+  // allows track asc/desc lexicographic sort to work for track
+  // and disc numbers up to 99,999 (was 999)
   track.disc_track = `${track.disc_number || 0}`.padStart(6, '0');
   track.disc_track += '.';
   track.disc_track += `${track.track_number || 0}`.padStart(6, '0');

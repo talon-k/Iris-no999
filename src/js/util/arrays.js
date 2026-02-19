@@ -159,13 +159,6 @@ const sortItems = (array, property, reverse = false) => {
         return item.album ? item.album.name : undefined;
       case 'user':
         return item.user ? item.user.id : undefined;
-      case 'track_number': {
-        const v = item[property];
-        const n = typeof v === 'number'
-          ? v
-          : parseInt(String(v), 10);
-        return Number.isFinite(n) ? n : 0;
-      }
       default:
         return item[property];
     }

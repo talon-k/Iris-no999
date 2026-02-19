@@ -50,27 +50,6 @@ const Album = () => {
   if (sortField && tracks) tracks = sortItems(tracks, sortField, sortReverse);
   if (filter && filter !== '') tracks = applyFilter('name', filter, tracks);
 
-  // TEMP DEBUG (remove later)
-  if (tracks?.length) {
-    const pick = (i) => tracks[i] ? ({
-      i,
-      name: tracks[i].name,
-      uri: tracks[i].uri,
-      tlid: tracks[i].tlid,
-      type: tracks[i].type,
-    }) : { i, missing: true };
-
-    // eslint-disable-next-line no-console
-    console.log("Iris album tracks debug", {
-      albumUri: album?.uri,
-      tracksLen: tracks.length,
-      t998: pick(998),
-      t999: pick(999),
-      t1000: pick(1000),
-      t1134: pick(1134),
-    });
-  }
-
   useEffect(
     () => {
       if (uri) dispatch(loadAlbum(uri, { full: true }));
