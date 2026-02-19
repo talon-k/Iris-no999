@@ -74,6 +74,9 @@ const SmartList = memo(({
   const [itemHeight, setItemHeight] = useState(initialHeight);
   const chunks = chunk(items, chunkSize);
 
+  // eslint-disable-next-line no-console
+  console.log("SmartList debug", { items: items?.length, chunkSize, chunks: chunks?.length });
+
   return (
     <ErrorBoundary>
       {
